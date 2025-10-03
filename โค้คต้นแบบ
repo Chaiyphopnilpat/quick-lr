@@ -1,0 +1,195 @@
+แน่นอนครับ การสร้าง MVP สามารถทำได้ด้วยเทคโนโลยีหลากหลายภาษา
+นี่คือตัวอย่างโค้ดสำหรับฟีเจอร์หลัก "AI Risk Score V1.0" (ระบบ AI เบื้องต้นที่ประมวลผลข้อมูลและแสดงคะแนนความเสี่ยง) โดยเขียนเป็นภาษาโปรแกรมยอดนิยมต่างๆ เพื่อให้เห็นภาพรวมครับ
+โจทย์: คำนวณคะแนนความเสี่ยงโรคหัวใจเบื้องต้นจากข้อมูล: อายุ, BMI (ดัชนีมวลกาย), และประวัติครอบครัว
+1. Python (สำหรับ Backend / AI)
+เป็นภาษาที่นิยมที่สุดสำหรับงานด้าน AI และ Data Science
+def calculate_heart_risk(age: int, bmi: float, has_family_history: bool) -> float:
+    """
+    คำนวณคะแนนความเสี่ยงโรคหัวใจเบื้องต้น (0.0 - 1.0)
+    """
+    base_score = 0.0
+
+    # คำนวณคะแนนจากอายุ
+    if age > 45:
+        base_score += 0.3
+
+    # คำนวณคะแนนจาก BMI
+    if bmi > 25.0:
+        base_score += 0.4
+
+    # คำนวณคะแนนจากประวัติครอบครัว
+    if has_family_history:
+        base_score += 0.3
+    
+    # ทำให้คะแนนไม่เกิน 1.0
+    return min(base_score, 1.0)
+
+# --- ตัวอย่างการใช้งาน ---
+risk = calculate_heart_risk(age=50, bmi=27.5, has_family_history=True)
+print(f"Health Risk Score: {risk:.2f}") # Output: Health Risk Score: 1.00
+
+2. JavaScript (สำหรับ Backend - Node.js หรือ Frontend)
+เป็นภาษาหลักของเว็บไซต์และสามารถใช้เขียน Backend ได้
+function calculateHeartRisk(age, bmi, hasFamilyHistory) {
+    /**
+     * คำนวณคะแนนความเสี่ยงโรคหัวใจเบื้องต้น (0.0 - 1.0)
+     */
+    let baseScore = 0.0;
+
+    // คำนวณคะแนนจากอายุ
+    if (age > 45) {
+        baseScore += 0.3;
+    }
+
+    // คำนวณคะแนนจาก BMI
+    if (bmi > 25.0) {
+        baseScore += 0.4;
+    }
+
+    // คำนวณคะแนนจากประวัติครอบครัว
+    if (hasFamilyHistory) {
+        baseScore += 0.3;
+    }
+
+    // ทำให้คะแนนไม่เกิน 1.0
+    return Math.min(baseScore, 1.0);
+}
+
+// --- ตัวอย่างการใช้งาน ---
+const risk = calculateHeartRisk(50, 27.5, true);
+console.log(`Health Risk Score: ${risk.toFixed(2)}`); // Output: Health Risk Score: 1.00
+
+3. Java (สำหรับ Backend หรือ Android App)
+เป็นภาษาที่แข็งแกร่งและนิยมใช้ในระบบ Enterprise และแอปพลิเคชัน Android
+public class HealthRiskCalculator {
+
+    /**
+     * คำนวณคะแนนความเสี่ยงโรคหัวใจเบื้องต้น (0.0 - 1.0)
+     */
+    public static double calculateHeartRisk(int age, double bmi, boolean hasFamilyHistory) {
+        double baseScore = 0.0;
+
+        // คำนวณคะแนนจากอายุ
+        if (age > 45) {
+            baseScore += 0.3;
+        }
+
+        // คำนวณคะแนนจาก BMI
+        if (bmi > 25.0) {
+            baseScore += 0.4;
+        }
+
+        // คำนวณคะแนนจากประวัติครอบครัว
+        if (hasFamilyHistory) {
+            baseScore += 0.3;
+        }
+        
+        // ทำให้คะแนนไม่เกิน 1.0
+        return Math.min(baseScore, 1.0);
+    }
+
+    // --- ตัวอย่างการใช้งาน ---
+    public static void main(String[] args) {
+        double risk = calculateHeartRisk(50, 27.5, true);
+        System.out.printf("Health Risk Score: %.2f%n", risk); // Output: Health Risk Score: 1.00
+    }
+}
+
+4. C# (สำหรับ Backend - .NET)
+เป็นภาษาหลักใน ecosystem ของ Microsoft และใช้พัฒนาเกมด้วย Unity
+using System;
+
+public class HealthRiskCalculator
+{
+    /// <summary>
+    /// คำนวณคะแนนความเสี่ยงโรคหัวใจเบื้องต้น (0.0 - 1.0)
+    /// </summary>
+    public static double CalculateHeartRisk(int age, double bmi, bool hasFamilyHistory)
+    {
+        double baseScore = 0.0;
+
+        // คำนวณคะแนนจากอายุ
+        if (age > 45) baseScore += 0.3;
+
+        // คำนวณคะแนนจาก BMI
+        if (bmi > 25.0) baseScore += 0.4;
+        
+        // คำนวณคะแนนจากประวัติครอบครัว
+        if (hasFamilyHistory) baseScore += 0.3;
+
+        // ทำให้คะแนนไม่เกิน 1.0
+        return Math.Min(baseScore, 1.0);
+    }
+
+    // --- ตัวอย่างการใช้งาน ---
+    public static void Main(string[] args)
+    {
+        double risk = CalculateHeartRisk(50, 27.5, true);
+        Console.WriteLine($"Health Risk Score: {risk:F2}"); // Output: Health Risk Score: 1.00
+    }
+}
+
+5. Swift (สำหรับ iOS App)
+ภาษาหลักสำหรับพัฒนาแอปพลิเคชันบน iPhone, iPad, และ Mac
+import Foundation
+
+/// คำนวณคะแนนความเสี่ยงโรคหัวใจเบื้องต้น (0.0 - 1.0)
+func calculateHeartRisk(age: Int, bmi: Double, hasFamilyHistory: Bool) -> Double {
+    var baseScore = 0.0
+
+    // คำนวณคะแนนจากอายุ
+    if age > 45 {
+        baseScore += 0.3
+    }
+
+    // คำนวณคะแนนจาก BMI
+    if bmi > 25.0 {
+        baseScore += 0.4
+    }
+
+    // คำนวณคะแนนจากประวัติครอบครัว
+    if hasFamilyHistory {
+        baseScore += 0.3
+    }
+
+    // ทำให้คะแนนไม่เกิน 1.0
+    return min(baseScore, 1.0)
+}
+
+// --- ตัวอย่างการใช้งาน ---
+let risk = calculateHeartRisk(age: 50, bmi: 27.5, hasFamilyHistory: true)
+print(String(format: "Health Risk Score: %.2f", risk)) // Output: Health Risk Score: 1.00
+
+6. Kotlin (สำหรับ Android App)
+ภาษาที่ Google แนะนำสำหรับพัฒนาแอปพลิเคชัน Android สมัยใหม่
+/**
+ * คำนวณคะแนนความเสี่ยงโรคหัวใจเบื้องต้น (0.0 - 1.0)
+ */
+fun calculateHeartRisk(age: Int, bmi: Double, hasFamilyHistory: Boolean): Double {
+    var baseScore = 0.0
+
+    // คำนวณคะแนนจากอายุ
+    if (age > 45) {
+        baseScore += 0.3
+    }
+
+    // คำนวณคะแนนจาก BMI
+    if (bmi > 25.0) {
+        baseScore += 0.4
+    }
+    
+    // คำนวณคะแนนจากประวัติครอบครัว
+    if (hasFamilyHistory) {
+        baseScore += 0.3
+    }
+
+    // ทำให้คะแนนไม่เกิน 1.0
+    return minOf(baseScore, 1.0)
+}
+
+// --- ตัวอย่างการใช้งาน ---
+fun main() {
+    val risk = calculateHeartRisk(50, 27.5, true)
+    println("Health Risk Score: %.2f".format(risk)) // Output: Health Risk Score: 1.00
+}
+
