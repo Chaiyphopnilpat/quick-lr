@@ -1,5 +1,5 @@
-import SurveillanceDashboard from "@/components/surveillance-dashboard"
+import { AICommandCenter } from "@/components/ai-command-center"
 
-export default function Home() {
-  return <SurveillanceDashboard />
+export default function Page() {
+  return <AICommandCenter />
 }
