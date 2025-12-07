@@ -1,15 +1,18 @@
 import type React from "react"
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Omega AI Command Center - Decision Transparency Engine",
-  description: "AI-powered browser and AGI simulation with real-time decision transparency",
-  generator: "v0.app",
+  title: "Genesis Retail OS | The Sentient Commerce Engine",
+  description:
+    "AI-powered retail operating system that understands natural language commands. Built with Ψ-Fusion technology.",
+  generator: "Project Genesis",
+  keywords: ["retail", "AI", "commerce", "automation", "thai retail", "POS"],
   icons: {
     icon: [
       {
@@ -29,10 +32,6 @@ export const metadata: Metadata = {
   },
 }
 
-export const viewport: Viewport = {
-  themeColor: "#0a0a0f",
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -40,7 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" className="dark">
-      <body className={`font-sans antialiased`}>{children}</body>
+      <body className={`font-sans antialiased`}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
